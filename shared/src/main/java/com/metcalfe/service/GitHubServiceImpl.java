@@ -6,6 +6,9 @@ import org.json.JSONException;
 
 import java.util.List;
 
+import rx.Observable;
+import rx.functions.Func0;
+
 /**
  * Created by alex on 12/07/15.
  */
@@ -32,6 +35,16 @@ public class GitHubServiceImpl implements GitHubService {
         }
 
         return contributors;
+    }
+
+    @Override
+    public Observable<List<Contributor>> observeContributors() {
+        return Observable.defer(new Func0<Observable<List<Contributor>>>() {
+            @Override
+            public Observable<List<Contributor>> call() {
+                return Observable.just(contributors());
+            }
+        });
     }
 
 }

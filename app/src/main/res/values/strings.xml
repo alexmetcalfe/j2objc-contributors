@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">J2objc-customer</string>
+    <string name="app_name">j2objc contributors</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 </resources>

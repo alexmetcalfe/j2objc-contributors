@@ -1,11 +1,9 @@
-package alexmetcalfe.metcalfe;
+package com.metcalfe;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-
-import alexmetcalfe.j2objc_customer.R;
 
 public class MainActivity extends Activity {
 

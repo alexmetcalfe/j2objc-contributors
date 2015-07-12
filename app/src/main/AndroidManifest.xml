@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="alexmetcalfe.j2objc_customer" >
+    package="com.metcalfe" >
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -10,14 +10,14 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="alexmetcalfe.metcalfe.MainActivity"
+            android:name="com.metcalfe.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="alexmetcalfe.metcalfe.ContributorDetailActivity"/>
+        <activity android:name="com.metcalfe.ContributorDetailActivity"/>
     </application>
 
 </manifest>

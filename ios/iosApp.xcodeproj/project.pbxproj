@@ -18,6 +18,7 @@
 		FA39376B1B51311600DCCDF1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA39376A1B51311600DCCDF1 /* Images.xcassets */; };
 		FA39376E1B51311600DCCDF1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA39376C1B51311600DCCDF1 /* LaunchScreen.xib */; };
 		FA39377A1B51311600DCCDF1 /* iosAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3937791B51311600DCCDF1 /* iosAppTests.swift */; };
+		FA6D6DA91B527E21006F7E97 /* rxjava-1.0.12-sources.jar in Frameworks */ = {isa = PBXBuildFile; fileRef = FA6D6DA81B527E21006F7E97 /* rxjava-1.0.12-sources.jar */; };
 		FA8CF74A1B515A1A00C43F60 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA8CF7491B515A1A00C43F60 /* Security.framework */; };
 		FA8CF74C1B515A2500C43F60 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FA8CF74B1B515A2500C43F60 /* libz.dylib */; };
 		FA8CF74E1B515A3100C43F60 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FA8CF74D1B515A3100C43F60 /* libicucore.dylib */; };
@@ -66,6 +67,7 @@
 		FA3937731B51311600DCCDF1 /* iosAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iosAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA3937781B51311600DCCDF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA3937791B51311600DCCDF1 /* iosAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iosAppTests.swift; sourceTree = "<group>"; };
+		FA6D6DA81B527E21006F7E97 /* rxjava-1.0.12-sources.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; name = "rxjava-1.0.12-sources.jar"; path = "../shared/libs/rxjava-1.0.12-sources.jar"; sourceTree = "<group>"; };
 		FA8CF7491B515A1A00C43F60 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		FA8CF74B1B515A2500C43F60 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		FA8CF74D1B515A3100C43F60 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
@@ -80,6 +82,7 @@
 			files = (
 				FA8CF74E1B515A3100C43F60 /* libicucore.dylib in Frameworks */,
 				FA8CF74C1B515A2500C43F60 /* libz.dylib in Frameworks */,
+				FA6D6DA91B527E21006F7E97 /* rxjava-1.0.12-sources.jar in Frameworks */,
 				FA8CF74A1B515A1A00C43F60 /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -156,9 +159,18 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		FA6D6DA71B527E05006F7E97 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				FA6D6DA81B527E21006F7E97 /* rxjava-1.0.12-sources.jar */,
+			);
+			name = libs;
+			sourceTree = "<group>";
+		};
 		FA8CF73F1B5158CC00C43F60 /* shared */ = {
 			isa = PBXGroup;
 			children = (
+				FA6D6DA71B527E05006F7E97 /* libs */,
 				FA8CF7661B5166CD00C43F60 /* src */,
 			);
 			name = shared;

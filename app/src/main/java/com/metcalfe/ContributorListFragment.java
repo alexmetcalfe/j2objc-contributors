@@ -1,8 +1,7 @@
-package alexmetcalfe.metcalfe;
+package com.metcalfe;
 
 import android.app.Fragment;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -18,14 +17,18 @@ import com.metcalfe.service.SimpleHttpClient;
 
 import java.util.List;
 
-import alexmetcalfe.j2objc_customer.R;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import rx.android.app.AppObservable;
+import rx.functions.Action1;
+import rx.schedulers.Schedulers;
 
 /**
  * A placeholder fragment containing a simple view.
  */
 public class ContributorListFragment extends Fragment {
+
+    private static final String TAG = "ContributorListFragment";
 
     private GitHubService mGitHubService;
 
@@ -48,31 +51,25 @@ public class ContributorListFragment extends Fragment {
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this.getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
-        new LoadContributorsTask().execute();
-    }
 
-    private class LoadContributorsTask extends AsyncTask<Void, Void, List<Contributor>> {
+        AppObservable.bindFragment(this, mGitHubService.observeContributors())
+                .subscribeOn(Schedulers.io())
+                .subscribe(new Action1<List<Contributor>>() {
+                    @Override
+                    public void call(List<Contributor> contributors) {
+                        mAdapter = new SimpleAdapter(contributors, new SimpleAdapter.ViewHolder.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(View view, int position) {
+                                Contributor contributor = mAdapter.getItem(position);
 
-        @Override
-        protected void onPostExecute(List<Contributor> contributors) {
-            super.onPostExecute(contributors);
-            mAdapter = new SimpleAdapter(contributors, new SimpleAdapter.ViewHolder.OnItemClickListener() {
-                @Override
-                public void onItemClick(View view, int position) {
-                    Contributor contributor = mAdapter.getItem(position);
-
-                    Intent intent = new Intent(getActivity(), ContributorDetailActivity.class);
-                    intent.putExtra("contributions", contributor.getContributions());
-                    startActivityForResult(intent, 0);
-                }
-            });
-            mRecyclerView.setAdapter(mAdapter);
-        }
-
-        @Override
-        protected List<Contributor> doInBackground(Void... params) {
-            return mGitHubService.contributors();
-        }
+                                Intent intent = new Intent(getActivity(), ContributorDetailActivity.class);
+                                intent.putExtra("contributions", contributor.getContributions());
+                                startActivityForResult(intent, 0);
+                            }
+                        });
+                        mRecyclerView.setAdapter(mAdapter);
+                    }
+                });
     }
 
     public static class SimpleAdapter extends RecyclerView.Adapter<SimpleAdapter.ViewHolder> {

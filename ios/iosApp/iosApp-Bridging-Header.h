@@ -11,5 +11,3 @@
 #import "HttpClient.h"
 #import "SimpleHttpClient.h"
 #import "ContributorMapper.h"
-
-

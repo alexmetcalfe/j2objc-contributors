@@ -38,6 +38,7 @@ class MasterViewController: UITableViewController {
         let backgroundQueue = dispatch_get_global_queue(qualityOfServiceClass, 0)
 
         dispatch_async(backgroundQueue, {
+            
             var contributors = self.gitHubServce.contributors()
             let listSize = Int(contributors.size())
             

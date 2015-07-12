@@ -1,11 +1,9 @@
-package alexmetcalfe.metcalfe;
+package com.metcalfe;
 
 import android.app.Activity;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.MenuItem;
-
-import alexmetcalfe.j2objc_customer.R;
 
 /**
  * Created by alex on 12/07/15.

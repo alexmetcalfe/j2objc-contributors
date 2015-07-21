@@ -1,3 +1,28 @@
+// File: shared/build.gradle
+plugins {
+    id 'java'
+    // Modify with latest version:
+    // https://plugins.gradle.org/plugin/com.github.j2objccontrib.j2objcgradle
+    id 'com.github.j2objccontrib.j2objcgradle' version '0.3.0-alpha'
+}
+
+// Plugin settings:
+j2objcConfig {
+    xcodeProjectDir "${projectDir}/../ios_gradle"
+    xcodeTarget "gradleIos"
+
+    translateArgs "--no-package-directories"
+    translateArgs "-use-arc"
+
+    // translateSourcepaths "libs/dagger-2.0.1-sources.jar"
+
+    extraObjcCompilerArgs '-fobjc-arc'
+
+    finalConfigure()
+}
+
+
+
 apply plugin: 'java'
 sourceCompatibility = 1.6
 targetCompatibility = 1.6
@@ -6,9 +31,11 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
     compile 'org.json:json:20141113'
-    compile 'io.reactivex:rxjava:1.0.12'
+    compile 'com.google.dagger:dagger:2.0.1'
 
     testCompile 'junit:junit:4.11'
     testCompile 'org.mockito:mockito-core:2.0.28-beta'
 
 }
+
+

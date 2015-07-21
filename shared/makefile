@@ -41,7 +41,7 @@ ifeq ($(BUILD_CONFIGURATION), Debug)
 endif
 
 BUILD_DIR := $(DERIVED_FILES_DIR)
-J2OBJC_FLAGS += --no-package-directories --prefixes "$(J2OBJC_PREFIX_FILE)" -use-arc --build-closure
+J2OBJC_FLAGS += --no-package-directories --prefixes "$(J2OBJC_PREFIX_FILE)" -use-arc --build-closure --doc-comments
 # Flatten the list of Objective-C files as that is how Xcode will expect them
 OBJC_FILES := $(addprefix $(BUILD_DIR)/, $(notdir $(SRC_FILES:.java=.m)))
 vpath %.java $(SRC_FOLDERS)
@@ -54,7 +54,7 @@ TRANSLATE_LIST=$(BUILD_DIR)/.translate_list
 
 translate: $(BUILD_DIR) init-translate-list $(OBJC_FILES) $(OBJC_HEADERS)
 	@if [ -s $(TRANSLATE_LIST) ]; then \
-		xargs "/Users/alex/dev/bin/j2objc/j2objc" $(J2OBJC_FLAGS) -use-arc -classpath build/classes/main -sourcepath libs/rxjava-1.0.12-sources.jar -d $(BUILD_DIR) < "$(TRANSLATE_LIST)"; \
+		xargs "/Users/alex/dev/bin/j2objc/j2objc" $(J2OBJC_FLAGS) -use-arc -classpath build/classes/main -sourcepath libs/dagger-2.0.1-sources.jar -d $(BUILD_DIR) < "$(TRANSLATE_LIST)"; \
 	fi
 	rm -f "$(TRANSLATE_LIST)"
 

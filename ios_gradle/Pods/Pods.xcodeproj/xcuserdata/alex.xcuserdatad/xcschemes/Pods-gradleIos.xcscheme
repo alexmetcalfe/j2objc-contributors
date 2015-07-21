@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "667813E24FD881B8C0E6E5FA"
+               BlueprintIdentifier = "4B3B68D3ADDECF32CAC147F0"
                BuildableName = "libPods-gradleIos.a"
                BlueprintName = "Pods-gradleIos"
                ReferencedContainer = "container:Pods.xcodeproj">

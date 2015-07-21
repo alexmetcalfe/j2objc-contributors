@@ -12,13 +12,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.metcalfe.model.Contributor;
+import com.metcalfe.service.ContributorMapper;
 import com.metcalfe.service.GitHubService;
 import com.metcalfe.service.GitHubServiceImpl;
 import com.metcalfe.service.SimpleHttpClient;
 
 import java.util.List;
-
-import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -30,7 +29,7 @@ public class ContributorListFragment extends Fragment {
 
     private static final String TAG = "ContributorListFragment";
 
-    @Inject
+    //@Inject
     private GitHubService mGitHubService;
 
     @InjectView(R.id.contributors)
@@ -48,12 +47,12 @@ public class ContributorListFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.inject(this, view);
 
-        mGitHubService = new GitHubServiceImpl(new SimpleHttpClient());
+        mGitHubService = new GitHubServiceImpl(new SimpleHttpClient(), new ContributorMapper());
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this.getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        BaseApplication.component(this.getActivity()).inject(this);
+        //BaseApplication.component(this.getActivity()).inject(this);
 
         new LoadContributorsTask().execute();
     }

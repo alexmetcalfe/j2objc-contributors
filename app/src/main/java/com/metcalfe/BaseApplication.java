@@ -1,7 +1,6 @@
 package com.metcalfe;
 
 import android.app.Application;
-import android.content.Context;
 
 /**
  * Created by alex on 15/07/15.
@@ -13,24 +12,24 @@ public class BaseApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        buildComponentAndInject();
+       // buildComponentAndInject();
     }
 
-    public void buildComponentAndInject() {
-        component = DaggerComponentInitializer.init(this);
-    }
-
-    public static SharedComponent component(Context context) {
-        return ((BaseApplication) context.getApplicationContext()).component;
-    }
-
-    public final static class DaggerComponentInitializer {
-
-        public static SharedComponent init(BaseApplication app) {
-            return SharedComponent.builder()
-                    .systemServicesModule(new SharedModule())
-                    .build();
-        }
-
-    }
+//    public void buildComponentAndInject() {
+//        component = DaggerComponentInitializer.init(this);
+//    }
+//
+//    public static SharedComponent component(Context context) {
+//        return ((BaseApplication) context.getApplicationContext()).component;
+//    }
+//
+//    public final static class DaggerComponentInitializer {
+//
+//        public static SharedComponent init(BaseApplication app) {
+//            return SharedComponent.builder()
+//                    .systemServicesModule(new SharedModule())
+//                    .build();
+//        }
+//
+//    }
 }

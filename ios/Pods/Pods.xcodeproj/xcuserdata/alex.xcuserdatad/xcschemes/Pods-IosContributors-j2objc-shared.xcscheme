@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BC372DB38E9D42E8F634F37E"
+               BlueprintIdentifier = "7481DDB7395849A117F7FAA2"
                BuildableName = "libPods-IosContributors-j2objc-shared.a"
                BlueprintName = "Pods-IosContributors-j2objc-shared"
                ReferencedContainer = "container:Pods.xcodeproj">

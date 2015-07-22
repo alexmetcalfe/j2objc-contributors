@@ -1,0 +1,15 @@
+# Uncomment this line to define a global platform for your project
+# platform :ios, '6.0'
+
+source 'https://github.com/CocoaPods/Specs.git'
+
+target 'IosContributors' do
+
+pod 'j2objc-shared', :path => '/Users/alex/dev/projects/j2objc-contributors/shared/build'
+pod 'MBProgressHUD', '~> 0.9.1'
+
+end
+
+target 'IosContributorsTests' do
+
+end

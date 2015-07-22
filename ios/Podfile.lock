@@ -1,0 +1,17 @@
+PODS:
+  - j2objc-shared (1.0)
+  - MBProgressHUD (0.9.1)
+
+DEPENDENCIES:
+  - j2objc-shared (from `/Users/alex/dev/projects/j2objc-contributors/shared/build`)
+  - MBProgressHUD (~> 0.9.1)
+
+EXTERNAL SOURCES:
+  j2objc-shared:
+    :path: /Users/alex/dev/projects/j2objc-contributors/shared/build
+
+SPEC CHECKSUMS:
+  j2objc-shared: fbdf45e60d03ba7e3482d9ce2bf5d77458268ea0
+  MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
+
+COCOAPODS: 0.34.2

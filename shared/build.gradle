@@ -8,13 +8,12 @@ plugins {
 
 // Plugin settings:
 j2objcConfig {
-    xcodeProjectDir "${projectDir}/../ios_gradle"
-    xcodeTarget "gradleIos"
+    xcodeProjectDir "${projectDir}/../ios"
+    xcodeTarget "IosContributors"
 
     translateArgs "--no-package-directories"
     translateArgs "-use-arc"
-
-    // translateSourcepaths "libs/dagger-2.0.1-sources.jar"
+    translateArgs "--build-closure"
 
     extraObjcCompilerArgs '-fobjc-arc'
 
@@ -35,7 +34,6 @@ dependencies {
 
     testCompile 'junit:junit:4.11'
     testCompile 'org.mockito:mockito-core:2.0.28-beta'
-
 }
 
 

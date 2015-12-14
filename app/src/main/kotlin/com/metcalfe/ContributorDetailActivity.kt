@@ -1,21 +1,21 @@
 package com.metcalfe
 
-import android.app.Activity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 
 /**
  * Created by alex on 12/07/15.
  */
-class ContributorDetailActivity : Activity() {
+class ContributorDetailActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
-        actionBar!!.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        val ft = fragmentManager.beginTransaction()
+        val ft = supportFragmentManager.beginTransaction()
         ft.add(R.id.content, ContributorDetailFragment.newInstance(intent.getIntExtra("contributions", 0))).commit()
     }
 

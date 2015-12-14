@@ -10,6 +10,7 @@ import org.mockito.Mockito;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
@@ -19,17 +20,6 @@ import static org.junit.Assert.assertNull;
 public class GitHubServiceImplTest {
 
     private GitHubService gitHubService;
-
-    String JSON_INPUT = "[\n" +
-            "  {\n" +
-            "    \"login\": \"test1\",\n" +
-            "    \"contributions\": 1469\n" +
-            "  },\n" +
-            "  {\n" +
-            "    \"login\": \"test2\",\n" +
-            "    \"contributions\": 434\n" +
-            "  }]";
-
     private HttpClient mockHttpClient;
     private ContributorMapper mockContributorMapper;
 
@@ -44,21 +34,24 @@ public class GitHubServiceImplTest {
     @Test
     public void shouldReturnListOfContributors() throws JSONException {
         // given
-        Mockito.when(mockHttpClient.performGet(Mockito.anyString())).thenReturn(JSON_INPUT);
-        Mockito.when(mockContributorMapper.mapAll(JSON_INPUT)).thenReturn(new ArrayList<Contributor>());
+        String input = "123";
+        Mockito.when(mockHttpClient.performGet(Mockito.anyString())).thenReturn(input);
+        Mockito.when(mockContributorMapper.mapAll(input)).thenReturn(new ArrayList<Contributor>());
 
         // when
         List<Contributor> contributorList = gitHubService.contributors();
 
         // then
         assertNotNull(contributorList);
+        assertEquals(2, contributorList.size());
     }
 
     @Test
     public void shouldReturnNullIfJsonMappingFails() throws JSONException {
         // given
-        Mockito.when(mockHttpClient.performGet(Mockito.anyString())).thenReturn(JSON_INPUT);
-        Mockito.when(mockContributorMapper.mapAll(JSON_INPUT)).thenThrow(new JSONException("error"));
+        String input = "123";
+        Mockito.when(mockHttpClient.performGet(Mockito.anyString())).thenReturn(input);
+        Mockito.when(mockContributorMapper.mapAll(input)).thenThrow(new JSONException("error"));
 
         // when
         List<Contributor> contributorList = gitHubService.contributors();

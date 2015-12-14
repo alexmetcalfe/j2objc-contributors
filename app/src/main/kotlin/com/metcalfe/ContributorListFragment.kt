@@ -24,7 +24,6 @@ import java.util.*
  */
 class ContributorListFragment : Fragment() {
 
-    //@Inject
     lateinit  var mGitHubService: GitHubService
 
     @Bind(R.id.contributors)
@@ -46,8 +45,6 @@ class ContributorListFragment : Fragment() {
 
         val mLayoutManager = LinearLayoutManager(this.activity)
         mRecyclerView.layoutManager = mLayoutManager
-
-        //BaseApplication.component(this.getActivity()).inject(this);
 
         LoadContributorsTask().execute()
     }

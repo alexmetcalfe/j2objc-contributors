@@ -6,6 +6,10 @@ plugins {
     id 'com.github.j2objccontrib.j2objcgradle' version '0.5.0-alpha'
 }
 
+dependencies {
+    j2objcTranslation 'com.google.code.gson:gson:2.3.1:sources'
+}
+
 // Plugin settings:
 j2objcConfig {
     xcodeProjectDir "${projectDir}/../ios"
@@ -31,6 +35,7 @@ dependencies {
 
     compile 'org.json:json:20141113'
     compile 'com.google.dagger:dagger:2.0.1'
+
 
     testCompile 'junit:junit:4.11'
     testCompile 'org.mockito:mockito-core:2.0.28-beta'

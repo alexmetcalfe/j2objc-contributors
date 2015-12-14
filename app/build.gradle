@@ -1,13 +1,28 @@
+
 apply plugin: 'com.android.application'
 
+buildscript {
+
+    ext.kotlin_version = '1.0.0-beta-1038'
+
+    dependencies {
+        classpath rootProject.ext.androidPlugin
+
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "org.jetbrains.kotlin:kotlin-android-extensions:$kotlin_version"
+    }
+}
+
+apply plugin: 'kotlin-android'
+
 android {
-    compileSdkVersion 22
-    buildToolsVersion "23.0.0 rc2"
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
 
     defaultConfig {
         applicationId "alexmetcalfe.j2objc_customer"
         minSdkVersion 16
-        targetSdkVersion 22
+        targetSdkVersion 23
         versionCode 1
         versionName "1.0"
     }
@@ -17,18 +32,34 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+}
+
+ext {
+    androidSupportVersion = '23.1.1'
+    rxAndroidVersion = '1.0.1'
+    butterknifeVersion = '7.0.1'
 }
 
 dependencies {
+
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
-    compile 'com.android.support:appcompat-v7:22.2.0'
-    compile 'com.android.support:recyclerview-v7:22.2.0'
+    compile "com.android.support:appcompat-v7:${androidSupportVersion}"
+    compile "com.android.support:recyclerview-v7:${androidSupportVersion}"
 
-    compile 'io.reactivex:rxandroid:0.24.0'
-    compile 'com.jakewharton:butterknife:6.1.0'
+    compile "io.reactivex:rxandroid:${rxAndroidVersion}"
+    compile "com.jakewharton:butterknife:${butterknifeVersion}"
+    kapt "com.jakewharton:butterknife:$butterknifeVersion"
 
 
     compile project(':shared')
+}
 
+kapt {
+    generateStubs = true
 }
